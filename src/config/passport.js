@@ -1,6 +1,8 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import  User  from "../models/user.js";
+import jwt from "jsonwebtoken";
+import user from "../models/user.js";
 
 passport.use(
   "signup",
@@ -50,9 +52,12 @@ passport.use(
 
       // match password
       const match = await userFound.matchPassword(password);
-
+      
       if (!match) return done(null, false, { message: "Incorrect Password." });
 
+      const token = jwt.sign({ userId: userFound._id, userEmail: userFound.email }, 
+                          'secreto', { expiresIn: '8h' });
+        console.log(userFound);
       return done(null, userFound);
     }
   )

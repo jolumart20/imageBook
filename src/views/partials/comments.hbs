@@ -6,9 +6,10 @@
       <i class="fas fa-comments"></i> Latest Comments
     </h5>
   </div>
-  <div class="card-body">
-    <p>{{sidebar.comments}}</p>
+  <div class="card-body" id="sidebar-comments">
+    
       {{#each sidebar.comments}}
+      <h1>hola</h1>
       <div class="row">
         <div class="col">
           <a href="/images/{{image.uniqueId}}">
@@ -29,4 +30,45 @@
   </div>
 </div>
 {{/if}}
+<script>
+let i='';
+ async function getImage(imageId) {
+  const response = await fetch(`/image/${imageId}`);
+  const data = await response.json();  // Esperamos a que se resuelva el JSON
+  let img = data.filename;  // Aquí ya tenemos el objeto real
+  i = 'hola';
+  console.log(i);
+}
+  async function getSidebarComments() {
+    const response = await fetch('/sidebar');
+    const data = await response.json();
+
+    
+    
+    let content = '';
+    data.sidebar.comments.forEach(comment => {  
+      content += `
+        <div class="row mb-2">
+          <div class="col">
+            <a href="/images/${}">
+              <img src="/public/upload/${}" class="img-thumbnail w-70">
+            </a>
+          </div>
+          <div class="col">
+            <blockquote class="w-100">
+              <p>${comment.comment}</p>
+              <footer class="blockquote-footer">
+                <span>${comment.name}</span>
+                <span>${comment.timestamp}</span>
+              </footer>
+            </blockquote>
+          </div>
+        </div>`;
+    });
+    document.getElementById('sidebar-comments').innerHTML = content;
+  }
+  getSidebarComments();
+  alert('Sidebar comments loaded');
+  
+</script>
 

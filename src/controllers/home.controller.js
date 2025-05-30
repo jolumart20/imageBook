@@ -16,4 +16,17 @@ export const index = async (req, res, next) => {
     next(error);
   }
 };
+export const sidebarContent = async (req, res, next) => {
+  try {
+    const images = await Image.find()
+      .sort({ timestamp: -1 })
+      .lean({ virtuals: true });
+    let viewModel = { images: [] };
+    viewModel.images = images;
+    viewModel = await sidebar(viewModel);
+    res.json(viewModel);
+  } catch (error) {
+    next(error);
+  }
+}
 

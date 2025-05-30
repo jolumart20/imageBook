@@ -139,3 +139,13 @@ export const getComments = async (req, res) => {
     res.json({ response: "Bad Request." });
   }
 }
+export const getImage = async (req, res) => {
+  const image = await Image.findOne({
+    _id: req.params.image_id,
+  });
+  if (image) {
+    res.json(image);
+  } else {
+    res.json({ response: "Bad Request." });
+  }
+};
