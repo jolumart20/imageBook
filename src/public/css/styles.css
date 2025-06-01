@@ -1,3 +1,117 @@
+.blob-btn {
+  position: relative;
+  color: white;
+  font-size: 1rem;
+  background: #28a745;
+  padding: 0.6em 1.5em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  filter: url(#goo);
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.blob-btn__inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.blob-btn__blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.blob-btn__blob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  width: 1.5em;
+  height: 1.5em;
+  margin: -0.75em;
+  border-radius: 50%;
+  animation: blobAnim 2s infinite;
+}
+
+.blob-btn__blob:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.blob-btn__blob:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.blob-btn__blob:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+@keyframes blobAnim {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(1em, -1em) scale(1.2);
+  }
+  66% {
+    transform: translate(-1em, 1em) scale(0.8);
+  }
+}
+.like-button {
+  display: inline-block;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.button a {
+  color: white;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #28a745; /* Cambiado a verde estilo btn-success */
+  display: block;
+  position: relative;
+  padding: 15px 30px;
+  border-radius: 5px;
+
+  text-shadow: 0px 1px 0px #000;
+  box-shadow: inset 0 1px 0 #A9F5BC, 0 10px 0 #1e7e34;
+  transition: all 0.2s ease;
+}
+
+.button a:active {
+  top: 10px;
+  background-color: #218838;
+
+  box-shadow: inset 0 1px 0 #A9F5BC, inset 0 -3px 0 #1e7e34;
+}
+
+.button:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  padding: 4px;
+  position: absolute;
+  bottom: -15px;
+  left: -4px;
+  z-index: -1;
+  background-color: #155724;
+  border-radius: 5px;
+}
+
 body {
   background: #282828;
   /* background: #dcdde1; */

@@ -2,7 +2,7 @@ version: "3.8"
 
 services: 
   web:
-    container_name: imgshare_web
+    container_name: imageBook_web
     image: node
     build: .
     ports: 
@@ -14,7 +14,7 @@ services:
     environment: 
       - MONGODB_URI=mongodb://mongo/database
   mongo:
-    container_name: imgshare_mongo
+    container_name: imageBook_mongo
     image: mongo
     ports: 
       - 27017:27017
