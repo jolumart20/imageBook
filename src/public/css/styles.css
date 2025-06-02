@@ -112,6 +112,59 @@
   border-radius: 5px;
 }
 
+.navbar-custom {
+  background-color: #1b263b; /* Azul oscuro */
+}
+
+.navbar-custom .nav-link,
+.navbar-custom .dropdown-toggle {
+  color: #ff8c00 !important; /* Naranja */
+}
+
+.navbar-custom .dropdown-menu {
+  background-color: #1b263b; 
+}
+
+.navbar-custom .dropdown-item {
+  color: #ff8c00 !important; /* Naranja */
+}
+
+.navbar-custom .dropdown-item:hover {
+  background-color: #143049; 
+  color: #ffffff !important;
+}
+
+/* Texto naranja */
+.text-orange {
+  color: #ff8c00 !important;
+}
+
+/* Íconos sociales naranja */
+.footer-icons i {
+  color: #ff8c00;
+  transition: color 0.3s;
+}
+
+.footer-icons i:hover {
+  color: #ffffff;
+}
+.layout-wrapper {
+  display: flex;
+  background-color: #1b263b; /* azul oscuro */
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 80px; /* o lo que gustes */
+  background-color: #1b263b;
+}
+
+.content {
+  flex: 1;
+  background-color: #121212; /* color del centro, como el actual */
+  padding-bottom: 3rem; /* para que no se pegue el footer */
+}
+
 body {
   background: #282828;
   /* background: #dcdde1; */

@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark p-2">
+<nav class="navbar navbar-expand navbar-dark navbar-custom p-2">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/index">
       <img src="/public/images/imageBook.png" alt="imageBook" />
     </a>
     <button
@@ -19,10 +19,9 @@
         {{#unless user}}
           <li class="nav-item">
             <a class="nav-link d-flex align-items-center" href="/auth/signin">
-              <span class="material-icons me-2">
-                account_circle
-              </span>
-              Iniciar</a>
+              <span class="material-icons me-2">account_circle</span>
+              Iniciar
+            </a>
           </li>
         {{else}}
           <li class="nav-item dropdown">
@@ -39,7 +38,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/profile">Ajustes</a>
-              <a class="dropdown-item" href="/auth/logout">Cerrar Sesion</a>
+              <a class="dropdown-item" href="/auth/logout">Cerrar Sesión</a>
             </div>
           </li>
         {{/unless}}

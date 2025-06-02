@@ -5,7 +5,6 @@ import User from "../models/user.js";
 import { token } from "morgan";
 import cookieParser from "cookie-parser";
 
-
 export const renderSignUp = (req, res) => {
   res.render("authentication/signup", {
     layout: "nostats",

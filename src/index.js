@@ -9,3 +9,4 @@ import "./config/mongoose.js";
 app.listen(PORT, () => {
   console.log(`Server on port http://localhost:${PORT}`);
 });
+

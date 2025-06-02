@@ -138,6 +138,7 @@ export const getComments = async (req, res) => {
   } else {
     res.json({ response: "Bad Request." });
   }
+
 }
 export const getImage = async (req, res) => {
   const image = await Image.findOne({
