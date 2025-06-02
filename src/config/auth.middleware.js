@@ -1,8 +1,8 @@
-
+import { authCtrl } from "../controllers/index.js";
 import jwt from 'jsonwebtoken';
 
 export const authenticateToken = (req, res, next) => {
-    const token = req.cookies?.token;
+    const token = authCtrl.tok;
     if (!token) {
         next();
         return res.status(401).json({ error: 'No se proporcionó un token de acceso.' });

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+mongoose.set('strictQuery', true); 
 import { MONGODB_URI } from "../config.js";
 
 (async () => {
