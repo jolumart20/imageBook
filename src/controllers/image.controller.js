@@ -13,10 +13,10 @@ export const index = async (req, res, next) => {
     filename: { $regex: req.params.image_id },
   });
 
-  // if image does not exists
-  if (!image) return next(new Error("Image does not exists"));
+  // Si la imagen no existe
+  if (!image) return next(new Error("Imagen no encontrada"));
 
-  // increment views
+  // incrementa las vistas
   const updatedImage = await Image.findOneAndUpdate(
     { _id: image.id },
     { $inc: { views: 1 } }
@@ -24,7 +24,7 @@ export const index = async (req, res, next) => {
 
   viewModel.image = updatedImage;
 
-  // get image comments
+  // obtiene los comentarios
   const comments = await Comment.find({ image_id: image._id }).sort({
     timestamp: 1,
   });
@@ -36,6 +36,7 @@ export const index = async (req, res, next) => {
   res.render("image", viewModel);
 };
 
+  //Crea una nueva imagen
 export const create = (req, res) => {
   const saveImage = async () => {
     const imgUrl = randomNumber();
@@ -43,32 +44,32 @@ export const create = (req, res) => {
     if (images.length > 0) {
       saveImage();
     } else {
-      // Image Location
+      // Ubicacion de la imagen
       const imageTempPath = req.file.path;
       const ext = path.extname(req.file.originalname).toLowerCase();
       const targetPath = path.resolve(`./uploads/${imgUrl}${ext}`);
 
-      // Validate Extension
+      // Extensiones validas
       if (
         ext === ".png" ||
         ext === ".jpg" ||
         ext === ".jpeg" ||
         ext === ".gif"
       ) {
-        // you wil need the public/temp path or this will throw an error
+
         await fs.rename(imageTempPath, targetPath);
 
-        // create a new image
+        // creacion de la nueva imagen
         const newImg = new Image({
           title: req.body.title,
           filename: imgUrl + ext,
           description: req.body.description,
         });
 
-        // save the image
+        // Guarda la imagen 
         const imageSaved = await newImg.save();
 
-        // redirect to the list of images
+        // redirecciona la imagen a la lista
         res.redirect("/images/" + imageSaved.uniqueId);
       } else {
         await fs.unlink(imageTempPath);
@@ -76,10 +77,10 @@ export const create = (req, res) => {
       }
     }
   };
-
+  //guarda la imagen
   saveImage();
 };
-
+  //Contador de like's
 export const like = async (req, res) => {
   const image = await Image.findOne({
     filename: { $regex: req.params.image_id },
