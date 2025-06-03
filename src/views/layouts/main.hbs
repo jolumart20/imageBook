@@ -4,29 +4,38 @@
     <meta charset="UTF-8">
     {{>head}}
   </head>
-  <body>
+  <body class="layout-body">
     {{>navigation}}
 
-    <div class="container p-4">
-      <div class="row">
-        <div class="col-md-8">
-          {{{ body  }}} 
+    <div class="layout-wrapper">
+      <!-- BARRA IZQUIERDA -->
+      <div class="sidebar"></div>
+
+      <!-- CONTENIDO PRINCIPAL -->
+      <main class="main-content container p-4">
+        <div class="row">
+          <div class="col-md-8">
+            {{{ body }}}
+          </div>
+          <div class="col-md-4">
+            {{>stats this}}
+            {{>popular this}}
+            
+          </div>
         </div>
-        <div class="col-md-4">
-          {{>stats this}}
-          {{>popular this}}
-          {{>comments this}}
-        </div>
-      </div>
+      </main>
+
+      <!-- BARRA DERECHA -->
+      <div class="sidebar"></div>
     </div>
 
     <!-- FOOTER -->
-    <footer class="bg-dark text-white">
-      <div class="container p-2">
+    <footer class="navbar-custom text-orange">
+      <div class="container p-3">
         <div class="row">
           <div class="mx-auto text-center">
-            <p>imgShare.io | &copy; Copyright {{getCurrentYear}}, All rights reserved</p>
-            <p>
+            <p>imageBook.ISC | &copy; Copyright {{getCurrentYear}}, All rights reserved</p>
+            <p class="footer-icons">
               <i class="fab fa-twitter-square fa-2x"></i>
               <i class="fab fa-facebook-square fa-2x"></i>
             </p>

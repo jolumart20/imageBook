@@ -6,5 +6,7 @@ import { PORT } from "./config.js";
 import "./config/mongoose.js";
 
 // Starting the server
-app.listen(3001);
-console.log("Server on port", PORT);
+app.listen(PORT, () => {
+  console.log(`Server on port http://localhost:${PORT}`);
+});
+

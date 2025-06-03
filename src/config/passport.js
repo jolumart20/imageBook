@@ -18,7 +18,7 @@ passport.use(
 
       // return an error if the email already exists
       if (userFound) {
-        return done(null, false, { message: "The username is already Taken" });
+        return done(null, false, { message: "Usuario Existente" });
       }
 
       // create a new User
@@ -48,12 +48,12 @@ passport.use(
       const userFound = await User.findOne({ email });
 
       // if user does not exists
-      if (!userFound) return done(null, false, { message: "Not User found." });
+      if (!userFound) return done(null, false, { message: "Usuario no Encontrado" });
 
       // match password
       const match = await userFound.matchPassword(password);
       
-      if (!match) return done(null, false, { message: "Incorrect Password." });
+      if (!match) return done(null, false, { message: "Contraseña Incorrecta" });
 
       const token = jwt.sign({ userId: userFound._id, userEmail: userFound.email }, 
                           'secreto', { expiresIn: '8h' });
