@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/ --exec babel-node",
-    "start": "node dist/index.js",
+    "start": "node ./bin/dist/index.js",
     "compile": "babel src -d dist",
     "copyfiles": "ncp src/views dist/views && ncp src/public dist/public",
     "clean": "rimraf dist",
