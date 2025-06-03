@@ -1,4 +1,4 @@
 # imageBook
 Proyecto de servicios web
-Jose Luis Martinez
+Jose Luis Martinez Rojas
 Ramses Alexander Muñoz Lares
